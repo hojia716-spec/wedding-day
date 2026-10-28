@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hojiakbar & Shoxistaxon - To'y Taklifnomasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-accent: #c5a059;
+            --gold-dark: #9e7d3b;
+            --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #eef2f3 100%);
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --text-color: #2c2c2c;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-color);
+            text-align: center;
+            line-height: 1.7;
+            padding: 20px 10px;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 35px 22px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            position: relative;
+        }
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #c5a059, #9e7d3b);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+            font-size: 20px;
+            transition: transform 0.2s ease;
+        }
+        .music-btn:active { transform: scale(0.9); }
+        .decor-line {
+            width: 80px;
+            height: 2px;
+            background: var(--gold-accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--gold-dark);
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        .guest-name {
+            font-size: 1.05rem;
+            margin: 15px 0 20px 0;
+            color: #333;
+            font-weight: 600;
+            background: rgba(197, 160, 89, 0.08);
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px dashed var(--gold-accent);
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-top: 35px;
+            color: var(--gold-dark);
+            font-weight: 700;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .timer-box {
+            background: #ffffff;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 68px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .timer-box span {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+        }
+        .timer-box small { font-size: 0.7rem; color: #777; text-transform: uppercase; }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #c5a059, #9e7d3b);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.25);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-dark);
+            border: 1.5px solid var(--gold-accent);
+            box-shadow: none;
+        }
+        .card-box {
+            background: #ffffff;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .rsvp-option {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .rsvp-option input {
+            accent-color: var(--gold-accent);
+            width: 18px;
+            height: 18px;
+        }
+        textarea {
+            width: 100%;
+            height: 95px;
+            padding: 12px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: none;
+            outline: none;
+            margin-top: 8px;
+            background: #fafafa;
+        }
+        textarea:focus {
+            border-color: var(--gold-dark);
+            background: #fff;
+        }
+        footer { margin-top: 45px; font-size: 0.8rem; color: #888; }
+    </style>
+</head>
+<body>
+
+    <!-- Musiqa tugmasi -->
+    <button class="music-btn" id="musicToggle" onclick="toggleAudio()">🎵</button>
+    
+    <!-- girl in red – "we fell in love in october" kafolatlangan audio manbai -->
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+        <source src="https://ia801503.us.archive.org/15/items/girl-in-red-we-fell-in-love-in-october/girl%20in%20red%20-%20we%20fell%20in%20love%20in%20october.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <div class="guest-name" id="guestContainer">
+            Hurmatli mehmonga!
+        </div>
+
+        <p style="letter-spacing: 4px; font-size: 0.8rem; color: #888; text-transform: uppercase;">Taklif Etamiz</p>
+        
+        <h1>Hojiakbar & Shoxistaxon</h1>
+        <div class="decor-line"></div>
+        
+        <p style="font-style: italic; color: #555; margin-bottom: 20px; font-size: 0.95rem;">
+            Sizni oilamizning eng quvonchli kunida — nikoh to'yimizda ko'rishdan bag'oyat mamnun bo'lamiz!
+        </p>
+
+        <!-- Sana va Vaqt -->
+        <div class="section-title">Sana va Vaqt</div>
+        <p style="font-size: 1.2rem; font-weight: 600; margin-top: 5px; color: var(--gold-dark);">03.11.2026 (Seshanba)</p>
+        <p style="color: #666; font-weight: 500;">Soat: 14:00 da</p>
+
+        <!-- Taymer -->
+        <div class="timer">
+            <div class="timer-box"><span id="days">00</span><small>Kun</small></div>
+            <div class="timer-box"><span id="hours">00</span><small>Soat</small></div>
+            <div class="timer-box"><span id="minutes">00</span><small>Daqiqa</small></div>
+            <div class="timer-box"><span id="seconds">00</span><small>Soniya</small></div>
+        </div>
+
+        <!-- To'yxona Manzili va Xaritalar -->
+        <div class="section-title">To'yxona Manzili</div>
+        <p style="font-size: 1.1rem; font-weight: 600; margin-top: 5px;">"Sharshara" to'yxonasi</p>
+        <p style="color: #666; font-size: 0.95rem; margin-bottom: 12px;">Bag'dod shaharchasi, Farg'ona viloyati</p>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Sharshara+toyxonasi+Bagdod+Fargona" target="_blank" class="btn btn-outline">
+            📍 Google Maps (Bag'dod Sharshara)
+        </a>
+        <a href="https://yandex.com/maps/?text=Sharshara+to'yxonasi+Bag'dod+tuman" target="_blank" class="btn btn-outline">
+            🚕 Yandex Navigator / Maps
+        </a>
+
+        <!-- Ezgu Tilaklar va RSVP (Tashrifni tasdiqlash) -->
+        <div class="section-title">Ezgu Tilaklar & Tashrif</div>
+        <p style="font-size: 0.85rem; color: #777; margin-bottom: 5px;">Shirin tilaklaringiz va javobingizni qoldiring:</p>
+        
+        <div class="card-box">
+            <p style="font-weight: 600; margin-bottom: 8px;">To'yimizga kela olasizmi?</p>
+            <label class="rsvp-option">
+                <input type="radio" name="attendance" value="Albatta boraman! 🎉" checked>
+                <span>Albatta, jon-jon deb boraman! 🎉</span>
+            </label>
+            <label class="rsvp-option">
+                <input type="radio" name="attendance" value="Afsuski, borolmayman 😔">
+                <span>Afsuski, borolmayman 😔</span>
+            </label>
+
+            <hr style="border:0; border-top: 1px dashed rgba(197, 160, 89, 0.4); margin: 12px 0;">
+
+            <p style="font-weight: 600; margin-bottom: 6px;">Yosh juftlikka ezgu tilagingiz: ✨</p>
+            <textarea id="wishesInput" placeholder="Baxtiyor bo'linglar! Oila mustahkam bo'lsin..."></textarea>
+
+            <button onclick="sendRSVP()" class="btn" style="margin-top: 15px;">
+                ✉️ Telegram orqali yuborish
+            </button>
+        </div>
+
+        <footer>
+            <p>Hojiakbar & Shoxistaxon Baxt To'yi © 2026</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        let guestName = urlParams.get('ism') || "Hurmatli mehmon";
+        
+        if (guestName !== "Hurmatli mehmon") {
+            document.getElementById('guestContainer').innerHTML = 
+                `Hurmatli <strong>${decodeURIComponent(guestName)}</strong>, siz taklif etildingiz!`;
+        }
+
+        const audio = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            const btn = document.getElementById('musicToggle');
+            if (isPlaying) { 
+                audio.pause(); 
+                btn.innerText = '🎵'; 
+                isPlaying = false;
+            } else { 
+                audio.play().then(() => {
+                    btn.innerText = '⏸'; 
+                    isPlaying = true;
+                }).catch((err) => {
+                    console.log("Audio play error:", err);
+                }); 
+            }
+        }
+
+        function sendRSVP() {
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const wishText = document.getElementById('wishesInput').value.trim();
+            
+            let message = `Salom! Men ${decodeURIComponent(guestName)}.%0A%0ATo'yga tashrif: ${attendance}`;
+            
+            if (wishText) {
+                message += `%0A%0AEzgu tilagim: "${encodeURIComponent(wishText)}"`;
+            }
+            
+            window.open(`https://t.me/share/url?url=&text=${message}`, '_blank');
+        }
+
+        const weddingDate = new Date("Nov 3, 2026 14:00:00").getTime();
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".timer").innerHTML = "<b>To'y boshlandi! 🎉</b>";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
